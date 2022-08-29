@@ -130,7 +130,7 @@ function runTeamTracker () {
     }
     function buildHTML (){
        fs.writeFileSync(distPath, teamHTML(teamTrackerAry), (err) =>
-      err ? console.log(err) : console.log('Successfully created team.html!'))
+      err ? console.log(err) : console.log('Team roster is complete.'))
     }
 
     genTeam();
