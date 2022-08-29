@@ -1,9 +1,9 @@
-const Employee = require('.../lib/employee');
+const Employee = require('team-tracking-generator/lib/employee');
 
 describe('user input for employees', () => {
     test('create an object of data for all added employees', () => {
         const employee = new Employee();
-        expect(typeof(employee).toBe('object'));
+        expect(typeof(employee)).toBe('object');
     });
     test('creates an array of "employee" objects', () => {
         const employee = new Employee('Monica',2,'monicayuh@fakeemail.com');

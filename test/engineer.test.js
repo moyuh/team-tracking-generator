@@ -1,4 +1,4 @@
-const Engineer = require('.../lib/engineer');
+const Engineer = require('team-tracking-generator/lib/engineer');
 
 describe('user input for engineers', () => {
 

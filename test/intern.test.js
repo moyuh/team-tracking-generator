@@ -1,4 +1,4 @@
-const Intern = require('.../lib/intern');
+const Intern = require('team-tracking-generator/lib/intern');
 
 describe('user input for interns', () => {
 

@@ -2,30 +2,33 @@ const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const inquirer = require('inquirer');
-const chalk = require('chalk');
 const fs = require('fs');
 const path = require('path');
-const team = require('./src/team-template')
+const teamHTML = require('./src/team-template.js');
+const distDir = path.resolve(__dirname, 'dist');
+const distPath = path.join(distDir, "team.html");
+
 
 teamTrackerAry = []
 
 function runTeamTracker () {
-    function generateTeam (){
+    function genTeam (){
         inquirer.prompt([{
             type: 'list',
             message: 'Would you like to add one of the following employee roles to your team roster?',
             name: 'addEmployee',
             choices:['Manager', 'Engineer', 'Intern', 'Team Roster is complete.']
         }]).then(function(userInput){
-            switch(userInput.generateTeam) {
+            switch(userInput.addEmployee) {
                 case 'Manager': addManager();
                 break;
                 case 'Engineer': addEngineer();
                 break;
                 case 'Intern': addIntern();
                 break;
+                default: buildHTML();
             }
-            return buildHTML()
+           
         })
     }
     function addManager(){
@@ -38,8 +41,8 @@ function runTeamTracker () {
 
             {
                 type: 'input',
-                name: 'managerNumber',
-                message: "Please enter the Manager's Number:",
+                name: 'managerId',
+                message: "Please enter the Manager's ID Number:",
             },
 
             {
@@ -55,9 +58,9 @@ function runTeamTracker () {
             }
 
         ]).then(response => {
-            const manager = new Manager(response.managerName, response.managerNumber, response.managerEmail, response.officeNumber);
+            const manager = new Manager(response.managerName, response.managerId, response.managerEmail, response.officeNumber);
             teamTrackerAry.push(manager);
-            sendTeam();
+            genTeam();
         });
     }
 
@@ -71,8 +74,8 @@ function runTeamTracker () {
 
             {
                 type: 'input',
-                name: 'engineerNumber',
-                message: "Please enter the Engineer's Number:",
+                name: 'engineerId',
+                message: "Please enter the Engineer's ID Number:",
             },
 
             {
@@ -87,9 +90,9 @@ function runTeamTracker () {
                 message: "Please enter the Engineer's github:",
             }
         ]).then(response => {
-            const engineer = new Engineer(response.engineerName, response.engineerNumber, response.engineerEmail, response.engineerGithub);
+            const engineer = new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.engineerGithub);
             teamTrackerAry.push(engineer);
-            sendTeam();
+            genTeam();
         });
     }
 
@@ -103,8 +106,8 @@ function runTeamTracker () {
 
             {
                 type: 'input',
-                name: 'internNumber',
-                message: "Please enter the Intern's Number:",
+                name: 'internId',
+                message: "Please enter the Intern's ID Number:",
             },
 
             {
@@ -120,19 +123,17 @@ function runTeamTracker () {
             }
 
         ]).then(response => {
-            const intern = new Intern(response.internName, response.internNumber, response.internEmail, response.internSchool);
+            const intern = new Intern(response.internName, response.internId, response.internEmail, response.internSchool);
             teamTrackerAry.push(intern);
-            sendTeam();
+            genTeam();
         }); 
     }
     function buildHTML (){
-       console.log('Your Team has been created!'); 
-       const outputDir= path.resolve(_dirname, 'output');
-       const outputPath = path.join(outputDir, "team.html");
-       fs.writeFileSync(outputPath, team(teamTrackerAry), "utf-8" )
+       fs.writeFileSync(distPath, teamHTML(teamTrackerAry), (err) =>
+      err ? console.log(err) : console.log('Successfully created team.html!'))
     }
 
-    sendTeam();
+    genTeam();
 }
 
 runTeamTracker();

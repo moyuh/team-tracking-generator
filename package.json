@@ -22,5 +22,9 @@
   "homepage": "https://github.com/moyuh/team-tracking-generator#readme",
   "devDependencies": {
     "jest": "^29.0.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "path": "^0.12.7"
   }
 }

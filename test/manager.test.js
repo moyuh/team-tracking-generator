@@ -1,4 +1,4 @@
-const Manager = require('.../lib/manager');
+const Manager = require('team-tracking-generator/lib/manager');
 
 describe('user input for Managers', () => {
 
