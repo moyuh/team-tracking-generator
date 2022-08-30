@@ -1,4 +1,5 @@
 # Team Tracking Generator
+<img src= "/Users/monicayuh/Code/Challenges/week-10/team-tracking-generator/assets/_Users_monicayuh_Code_Challenges_week-10_team-tracking-generator_dist_team.html.png">
 
 ## Table of Contents
 
@@ -27,7 +28,7 @@
 
 Below is a video walkthrough of the last 2 steps!
 
-<img src="images/Untitled_ Aug 21, 2022 5_45 PM.gif"/>
+<img src="/Users/monicayuh/Code/Challenges/week-10/team-tracking-generator/assets/teamtracker.gif"/>
 
  ## [Usage](#table-of-contents)
  To create an easy to read employee roster with quick access to important facts including, but not limited to, name, ID, and email.
