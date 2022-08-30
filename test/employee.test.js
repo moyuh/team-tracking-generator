@@ -1,5 +1,7 @@
+// require proper js file for testing
 const Employee = require('team-tracking-generator/lib/employee');
 
+//test statements -written as either "test" or "it"
 describe('user input for employees', () => {
     test('create an object of data for all added employees', () => {
         const employee = new Employee();

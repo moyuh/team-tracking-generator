@@ -1,3 +1,4 @@
+//adds teammates to the html file
 const addTeam = teammates => {
     const addMngr = manager => {
         return `
@@ -69,7 +70,7 @@ const addTeam = teammates => {
          
 }
 
-
+//html file for everything other than the teammates which will be added with the above function at the location it is called out in.
 module.exports = teammates => {
     return `
     <!DOCTYPE html>

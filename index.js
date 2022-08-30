@@ -1,3 +1,4 @@
+//Packages
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
@@ -5,12 +6,14 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require('path');
 const teamHTML = require('./src/team-template.js');
+//Path for write html function
 const distDir = path.resolve(__dirname, 'dist');
 const distPath = path.join(distDir, "team.html");
 
 
 teamTrackerAry = []
 
+//function for inquirer prompting
 function runTeamTracker () {
     function genTeam (){
         inquirer.prompt([{
@@ -128,6 +131,7 @@ function runTeamTracker () {
             genTeam();
         }); 
     }
+    //function to write html
     function buildHTML (){
        fs.writeFileSync(distPath, teamHTML(teamTrackerAry), (err) =>
       err ? console.log(err) : console.log('Team roster is complete.'))
@@ -136,4 +140,5 @@ function runTeamTracker () {
     genTeam();
 }
 
+//call necessary functions globally
 runTeamTracker();
